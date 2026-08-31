@@ -1,0 +1,6 @@
+# DO NOT BLOCK — legitimate public Ethereum RPC providers abused as a C2 channel; hunting signal only
+eth.llamarpc.com
+mainnet.blockpi.network
+rpc.blastapi.io
+rpc.drpc.io
+rpc.flashbots.net
