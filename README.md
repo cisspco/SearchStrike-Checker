@@ -45,12 +45,12 @@ Raw blocklist URL (for firewall/EDR ingestion):
 https://raw.githubusercontent.com/cisspco/SearchStrike-Checker/main/iocs/domains.txt
 ```
 
-## Current counts (as of 2026-09-04 UTC)
+## Current counts (as of 2026-09-05 UTC)
 
 | File | Count |
 |---|---|
 | C2 domains (`iocs/domains.txt`) | 10 |
-| Abused RPC endpoints (`iocs/rpc-endpoints.txt`) | 5 |
+| Abused RPC endpoints (`iocs/rpc-endpoints.txt`) | 6 |
 | Needs review (`iocs/needs-review.txt`) | 4 |
 | File hashes (`iocs/sha256.txt`) | 11 |
 | Unverified domain candidates (`iocs/unverified-domains.txt`) | 0 |
