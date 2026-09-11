@@ -45,7 +45,7 @@ Raw blocklist URL (for firewall/EDR ingestion):
 https://raw.githubusercontent.com/cisspco/SearchStrike-Checker/main/iocs/domains.txt
 ```
 
-## Current counts (as of 2026-09-10 UTC)
+## Current counts (as of 2026-09-11 UTC)
 
 | File | Count |
 |---|---|
