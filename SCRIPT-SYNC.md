@@ -21,4 +21,6 @@
 
 2026-09-17 기준: 이번 실행에서는 페치 8건 중 2건(microsoft.com, cloud.google.com)이 성공했으나 둘 다 SearchStrike와 무관한 별개 캠페인(각각 Philips 위장 가짜 다운로더 캠페인, UNC5342/DPRK Contagious Interview)으로 확인되어 검증 근거로 사용하지 않았고, 나머지 6건(THORCert 원문 포함)은 차단/실패했습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com) 전부 이번까지 시도를 마쳤으나 접근 가능한 곳이 없었습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
 
+2026-09-18 기준: 이번 실행에서는 신규 2차 보도 소스 5건(cybersecuritynews.com, malwarebytes.com, guidepointsecurity.com, infosecurity-magazine.com, govextra.gov.il)을 처음 특정했으나 페치 8건 전부 차단되어 본문을 확인하지 못했고, krcert.or.kr·esentire.com·thorcert.notion.site 재시도도 모두 차단되었습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
