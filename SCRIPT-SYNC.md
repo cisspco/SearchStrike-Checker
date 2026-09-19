@@ -23,4 +23,6 @@
 
 2026-09-18 기준: 이번 실행에서는 신규 2차 보도 소스 5건(cybersecuritynews.com, malwarebytes.com, guidepointsecurity.com, infosecurity-magazine.com, govextra.gov.il)을 처음 특정했으나 페치 8건 전부 차단되어 본문을 확인하지 못했고, krcert.or.kr·esentire.com·thorcert.notion.site 재시도도 모두 차단되었습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
 
+2026-09-19 기준: 이번 실행에서는 새로운 2차 보도 후보 5건(scworld.com, cointrust.com, mexc.com, crimson7.io, elastic.co)을 처음 특정했으나 전부 차단되었고, krcert.or.kr 재시도도 차단되었습니다. 페치에 성공한 2건(microsoft.com, github.com/PJO2/tftpd64 issue #46)은 각각 SearchStrike와 무관한 별개 캠페인(Silver Fox)과 기존에 이미 검토·미채택된 가짜 Tftpd64 해시 재확인이었습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
