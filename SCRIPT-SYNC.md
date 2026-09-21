@@ -27,4 +27,6 @@
 
 2026-09-20 기준: 이번 실행에서는 신규 한국 소스 후보 1건(cyberone.kr)과 2차 보도 후보 5건(teamwin.in, govextra.gov.il, guidepointsecurity.com, infosecurity-magazine.com, malwarebytes.com)을 처음 시도했으나 페치 8건 전부 차단되어 본문을 확인하지 못했고, krcert.or.kr 재시도도 차단되었습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
 
+2026-09-21 기준: 이번 실행에서는 microsoft.com 신규 블로그(2026-09-01자)를 처음 페치했으나 SearchStrike와 무관한 별개 캠페인(Silver Fox 계열 가짜 설치파일)으로 확인되어 미채택했고, cloud.google.com 추정 URL은 404였습니다. 한국 소스 5곳 중 4곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr)은 이번에도 차단되었고 cyberone.kr·sk-shieldus.com은 DNS 조회 자체가 실패했습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
