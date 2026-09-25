@@ -35,4 +35,6 @@
 
 2026-09-24 기준: 이번 실행에서는 신규 2차 보도 후보 1건(esentire.com "EtherRAT & SYS_INFO Module: C2 on Ethereum (EtherHiding), Target Selection, CDN-Like Beacons")을 처음 특정했으나 페치가 차단되어 본문을 확인하지 못했습니다. microsoft.com의 신규 2026-09-01자 블로그("Counterfeit installers to system compromise")는 페치에 성공했으나 SearchStrike와 무관한 별개 캠페인(Razer/Edge/Kaspersky 위장 가짜 다운로드 사이트, 중국 기반 표적)으로 확인되어 미채택했습니다. 한국 소스 6곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, cyberone.kr, sk-shieldus.com) 전부 이번에도 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
 
+2026-09-25 기준: 이번 실행에서는 신규 2차 보도 후보 2건(cribl.io "Cribl SecOps uncovers EtherHiding malware campaign on the blockchain", socprime.com "ChainScript: Tracing a Node.js RAT Through the Blockchain")을 처음 특정했으나 페치 8건 전부 차단/실패(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, cyberone.kr, cribl.io, socprime.com은 EGRESS_BLOCKED, sk-shieldus.com은 DNS 조회 실패)되어 본문을 확인하지 못했습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
