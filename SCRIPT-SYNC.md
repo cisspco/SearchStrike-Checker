@@ -41,4 +41,6 @@
 
 2026-09-27 기준: 이번 실행에서는 신규 후보로 ransom-isac.org "XCTDH Adopts Hash Hiding"를 발견했으나 SearchStrike/EtherRAT와 무관한 별개 캠페인(XCTDH)으로 확인되어 미채택했습니다. microsoft.com은 이번에도 응답했으나 관련 결과 0건이었고, esentire.com 재시도를 포함해 나머지 페치는 모두 차단/실패(한국 소스 6곳 전부 접근 불가)했습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
 
+2026-09-28 기준: 이번 실행에서는 microsoft.com(2026-09-01자 블로그 재확인)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 둘 다 SearchStrike/EtherRAT와 무관한 별개 캠페인(각각 Razer/Edge/Kaspersky 위장 가짜 다운로드 사이트, DPRK/UNC5342 JADESNOW)으로 확인되어 미채택했습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr는 EGRESS_BLOCKED, sk-shieldus.com은 DNS 조회 실패) 전부 이번에도 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
