@@ -45,4 +45,6 @@
 
 2026-09-29 기준: 이번 실행에서는 신규 한국어 2차 소스 후보 1건(cyberone.kr "개발자 대상 유틸리티 도구로 위장한 악성코드 유포 주의 권고")을 처음 특정했으나 페치가 차단되어 본문을 확인하지 못했습니다. microsoft.com 블로그 검색은 응답했으나 관련 게시물 0건이었고, cloud.google.com "UNC5142 Leverages EtherHiding" 페치는 성공했으나 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5142, WordPress 경유 인포스틸러 유포)으로 확인되어 미채택했습니다. 한국 소스 6곳(cyberone.kr, krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr는 EGRESS_BLOCKED, sk-shieldus.com은 DNS 조회 실패) 전부 이번에도 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
 
+2026-09-30 기준: 이번 실행에서는 esentire.com("EtherRAT & SYS_INFO Module") 재시도가 차단되었고, 이더리움 RPC C2 검색에서 신규 후보(ransom-isac.org, gbhackers.com, cyberupdates365.com, cyberpress.org)가 나타났으나 모두 XCTDH/HashHiding이라는 별개의 DPRK 연계 캠페인으로 확인되어 미채택했습니다. microsoft.com 블로그 검색은 응답했으나 관련 게시물 0건이었고, 한국 소스 6곳(cyberone.kr, krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr는 EGRESS_BLOCKED, sk-shieldus.com은 DNS 조회 실패) 전부 이번에도 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 스크립트 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
