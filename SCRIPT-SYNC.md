@@ -53,4 +53,6 @@
 
 2026-10-03 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW)으로 확인되어 미채택했습니다. WebSearch 스니펫에서 KISA 헌팅 가이드의 `rpc.mevblock.io`/`X-Bot-Server` 언급이 재확인되었으나 원문(boho.or.kr) 페치는 계속 차단되어 기존 미검증 상태에서 변화가 없습니다. 한국 소스 6곳(boho.or.kr, krcert.or.kr, asec.ahnlab.com, igloo.co.kr, cyberone.kr는 EGRESS_BLOCKED, sk-shieldus.com은 DNS 조회 실패) 전부 이번에도 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상은 여전히 없습니다.
 
+2026-10-04 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW)으로 확인되어 미채택했습니다. 한국 소스 6곳(boho.or.kr, krcert.or.kr, asec.ahnlab.com, igloo.co.kr, cyberone.kr는 EGRESS_BLOCKED, sk-shieldus.com은 DNS 조회 실패) 전부 이번에도 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상은 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
