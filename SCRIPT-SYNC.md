@@ -63,4 +63,6 @@
 
 2026-10-08 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW/UNC5142)으로 재확인되어 미채택했습니다. WebSearch에서 GoCaracal, DeadLock, macOS EtherHiding(Prophet Security), SafeDep TTP 문서 등 블록체인 C2 관련 신규 글을 발견했으나 전부 SearchStrike와 무관한 별개 패밀리이거나 일반 기법 설명이라 미채택했습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com)과 신규 시도한 safedep.io 전부 DNS 조회 자체가 실패해 접근 불가했고, securityarsenal.com(전날 특정한 GlassWorm/EtherRAT/RebEx 기사)도 이번에는 DNS 조회가 실패했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상은 여전히 없습니다.
 
+2026-10-09 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW/UNC5142)으로 재확인되어 미채택했습니다. WebSearch에서 ASEC "Distribution of EtherRAT Malware Exploiting React2Shell Vulnerability (CVE-2025-55182)"(asec.ahnlab.com/en/91658/)와 hunt.io "The Gentlemen Affiliate Deploys EtherRAT" 기사를 신규 후보로 특정했으나 전자는 페치가 DNS 조회 실패로 차단되어 Tftpd64/Postman/WinDbg 등 SearchStrike 특유의 위장 도구와의 연관을 확인하지 못했고 후자는 미페치 상태입니다. 한국 소스 6곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, cyberone.kr) 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상은 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
