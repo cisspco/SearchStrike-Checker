@@ -1,9 +1,9 @@
-# SearchStrike IOC Snapshot — 2026-10-10 UTC
+# SearchStrike IOC Snapshot — 2026-10-11 UTC
 
 ## 수집 상태
 - 페치 성공: microsoft.com (검색결과 0건)
-- 페치 차단: sysdig.com, www.malwarebytes.com, www.esentire.com, cybersecuritynews.com, asec.ahnlab.com, www.krcert.or.kr, www.boho.or.kr (전부 DNS 조회 실패)
-- 한국 소스 접근 가능 여부: krcert.or.kr / boho.or.kr 2곳만 시도(페치 cap 8건 소진으로 asec.ahnlab.com 포함 3곳만 시도, igloo.co.kr / sk-shieldus.com / cyberone.kr는 이번 실행에서 시도하지 않음) — 시도한 3곳 모두 DNS 조회 자체가 실패해 접근 불가
+- 페치 차단: www.malwarebytes.com, www.esentire.com, webflow.sysdig.com, www.krcert.or.kr, asec.ahnlab.com, cybersecuritynews.com, www.boho.or.kr (전부 DNS 조회 실패)
+- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr 2곳만 시도(페치 cap 8건 소진으로 igloo.co.kr / sk-shieldus.com / cyberone.kr는 이번 실행에서 시도하지 않음) — 시도한 2곳 모두 DNS 조회 자체가 실패해 접근 불가
 - seed: 11 / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
@@ -32,7 +32,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 ## 검토 필요 (4)
 - hereusers.allsettled[.]net — 도메인 형태부터 RPC 인프라로 보이지 않으며 어떤 이더리움 RPC 제공업체와도 일치하지 않음
 - rpc.lokichain[.]io — "Lokichain"은 알려진 주요 이더리움 RPC/체인 제공업체가 아님, 검색으로 확인되는 서비스 없음
-- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — ⚠️ (미검증) KISA 헌팅 가이드 관련 WebSearch 스니펫에 이 호스트가 네트워크 침해지표로 재차 언급된 바 있으나 원문(boho.or.kr) 페치는 이번에도 차단되어 검증하지 못함
+- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — ⚠️ (미검증) 이번 실행의 WebSearch 스니펫(Malwarebytes "Inside a malicious infrastructure delivering EtherRAT")에서도 EtherRAT 샘플이 조회한 공개 RPC 목록에 "MEV Blocker"가 포함된다는 요약이 재확인되었으나, 해당 기사 본문 페치는 이번에도 DNS 조회 실패로 차단되어 정확한 호스트명(mevblocker.io vs mevblock.io)을 직접 검증하지 못함
 - rpc.payload[.]de — 알려진 공개 이더리움 RPC 제공업체(Alchemy, Infura, dRPC, BlockPI, LlamaRPC, Blast API, Flashbots 등) 목록에서 확인되지 않음
 
 ## 파일 해시 (11)
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: EtherRAT 관련 2차 보도 신규 후보 4건을 WebSearch에서 특정 — sysdig.com "EtherRAT Dissected: How a React2Shell Implant Delivers 5 Payloads Through Blockchain C2", malwarebytes.com "Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software"(2026-06), esentire.com "EtherRAT & SYS_INFO Module", cybersecuritynews.com "Hackers Use EtherRAT and EtherHiding"(2026-08-28). 전날 특정한 asec.ahnlab.com/en/91658/("Distribution of EtherRAT Malware Exploiting React2Shell Vulnerability CVE-2025-55182")도 재시도했으나 이번에도 DNS 조회 실패로 차단되어, 네 건의 신규 후보 모두 SearchStrike 특유의 위장 도구(Tftpd64/Postman/WinDbg 등)·node.exe LOCALAPPDATA 드롭과의 연관을 본문으로 확인하지 못했습니다. 모두 IOC로 미채택(미검증 상태로도 추가하지 않음 — 본문 접근 자체가 불가해 SearchStrike 연관성조차 불확실). microsoft.com 블로그 검색은 관련 게시물 0건 재확인.
+- 신규 보고서: 없음 (기존에 이미 특정된 EtherRAT 2차 보도(Malwarebytes, eSentire, Sysdig webflow 미러, Cyber Security News)만 WebSearch 스니펫으로 재확인, 전부 페치 차단)
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,10 +84,10 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-10 — fetched (0 results)
-- [EtherRAT Dissected: How a React2Shell Implant Delivers 5 Payloads Through Blockchain C2 — Sysdig](https://sysdig.com/blog/etherrat-dissected-how-a-react2shell-implant-delivers-5-payloads-through-blockchain-c2) — blocked (DNS resolution failed)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-11 — fetched (0 results)
 - [Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software — Malwarebytes](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — blocked (DNS resolution failed)
 - [EtherRAT & SYS_INFO Module — eSentire Threat Response Unit](https://www.esentire.com/blog/etherrat-sys-info-module-c2-on-ethereum-etherhiding-target-selection-cdn-like-beacons) — blocked (DNS resolution failed)
+- [EtherRAT Dissected: How a React2Shell Implant Delivers 5 Payloads Through Blockchain C2 — Sysdig (webflow mirror)](https://webflow.sysdig.com/blog/etherrat-dissected-how-a-react2shell-implant-delivers-5-payloads-through-blockchain-c2) — blocked (DNS resolution failed)
 - [Hackers Use EtherRAT and EtherHiding — Cyber Security News](https://cybersecuritynews.com/hackers-use-etherrat-and-etherhiding/) — blocked (DNS resolution failed)
 - [Distribution of EtherRAT Malware Exploiting React2Shell Vulnerability (CVE-2025-55182) — ASEC](https://asec.ahnlab.com/en/91658/) — blocked (DNS resolution failed, 여전히 미확인)
 - krcert.or.kr — DNS resolution failed
