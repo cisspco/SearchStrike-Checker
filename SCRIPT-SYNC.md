@@ -69,4 +69,6 @@
 
 2026-10-11 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)만 페치에 성공했고, 기존에 이미 특정된 EtherRAT 2차 보도 4건(malwarebytes.com, esentire.com, webflow.sysdig.com, cybersecuritynews.com)과 asec.ahnlab.com, 한국 소스 2곳(krcert.or.kr, boho.or.kr)은 전부 DNS 조회 실패로 차단되었습니다(페치 cap 8건 소진으로 igloo.co.kr/sk-shieldus.com/cyberone.kr는 이번에 시도하지 않음). WebSearch 스니펫에서 Malwarebytes 기사가 EtherRAT 샘플이 조회하는 공개 RPC 중 "MEV Blocker"를 언급한다는 요약이 재확인되어 기존 검토 대상 `rpc.mevblock.io`(실제 서비스명 mevblocker.io와의 철자 불일치 의혹)와 관련이 있을 수 있으나, 본문 페치가 계속 차단되어 정확한 호스트명을 검증하지 못해 여전히 미확정 상태입니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
 
+2026-10-12 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)만 페치에 성공했고, 신규 후보로 특정한 securityarsenal.com "GlassWorm, EtherRAT and RebEx RAT" 재시도와 malwarebytes.com 재시도를 포함해 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com)은 전부 DNS 조회 실패로 차단되었습니다(페치 cap 8건 소진으로 cyberone.kr은 이번에 시도하지 않음). WebSearch에서는 NodeLoader, Nodersok, SharkStealer, macOS EtherHiding(Prophet Security), NullReceiver, DAEMON Tools/7-Zip/Notepad++ 트로이목마 설치파일 캠페인 등이 새로 노출되었으나 전부 SearchStrike/EtherRAT와 무관한 별개 패밀리로 확인되어 미채택했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
