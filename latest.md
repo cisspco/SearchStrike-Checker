@@ -1,9 +1,9 @@
-# SearchStrike IOC Snapshot — 2026-10-12 UTC
+# SearchStrike IOC Snapshot — 2026-10-13 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (검색결과 0건)
-- 페치 차단: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, securityarsenal.com, malwarebytes.com (전부 DNS 조회 실패)
-- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 모두 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가 (cyberone.kr은 페치 cap 8건 소진으로 이번에 시도하지 않음)
+- 페치 성공: microsoft.com (검색결과 0건), cloud.google.com (SearchStrike와 무관한 UNC5342/CLEARFAKE 캠페인)
+- 페치 차단: boho.or.kr, asec.ahnlab.com, krcert.or.kr, igloo.co.kr, sk-shieldus.com, malwarebytes.com (전부 DNS 조회 실패)
+- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 모두 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가 (페치 cap 8건 소진으로 cyberone.kr은 이번에 시도하지 않음)
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
@@ -32,7 +32,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 ## 검토 필요 (4)
 - hereusers.allsettled[.]net — 도메인 형태부터 RPC 인프라로 보이지 않으며 어떤 이더리움 RPC 제공업체와도 일치하지 않음
 - rpc.lokichain[.]io — "Lokichain"은 알려진 주요 이더리움 RPC/체인 제공업체가 아님, 검색으로 확인되는 서비스 없음
-- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — ⚠️ (미검증) WebSearch 스니펫에서 EtherRAT 샘플이 조회하는 공개 RPC 목록에 "MEV Blocker"가 포함된다는 요약이 재확인되었으나, 원문(malwarebytes.com) 페치가 이번에도 DNS 조회 실패로 차단되어 정확한 호스트명(mevblocker.io vs mevblock.io)을 여전히 직접 검증하지 못함
+- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 원문(malwarebytes.com) 페치가 이번에도 DNS 조회 실패로 차단되어 정확한 호스트명을 여전히 직접 검증하지 못함
 - rpc.payload[.]de — 알려진 공개 이더리움 RPC 제공업체(Alchemy, Infura, dRPC, BlockPI, LlamaRPC, Blast API, Flashbots 등) 목록에서 확인되지 않음
 
 ## 파일 해시 (11)
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: 없음 (WebSearch에서 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, webflow.sysdig.com, cybersecuritynews.com, securityarsenal.com)와 관련 없는 별개 캠페인(NodeLoader, Nodersok, SharkStealer, macOS EtherHiding/Prophet Security, NullReceiver, DAEMON Tools, 7-Zip, Notepad++ 트로이목마 설치파일 캠페인)만 재확인/신규 발견되었고, 전부 SearchStrike와 무관함)
+- 신규 보고서: 없음 (WebSearch에서는 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, webflow.sysdig.com, cybersecuritynews.com, securityarsenal.com, safedep.io)만 재확인되었고, 신규로 노출된 opensourcemalware.com "NullReceiver"와 prophetsecurity.ai macOS EtherHiding 기사는 모두 SearchStrike와 무관한 별개 캠페인/기법 설명으로 전날 이미 검토·미채택됨)
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,11 +84,11 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-12 — fetched (0 results)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-13 — fetched (0 results)
+- [DPRK adopts EtherHiding — Google Cloud Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (SearchStrike와 무관한 UNC5342/CLEARFAKE 캠페인으로 확인)
 - [Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software — Malwarebytes](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — blocked (DNS resolution failed)
-- [GlassWorm, EtherRAT and RebEx RAT: Blockchain C2 and Multi-Stage Supply Chain Attacks — Security Arsenal](https://securityarsenal.com/blog/glassworm-etherrat-and-rebex-rat-blockchain-c2-and-multi-stage-supply-chain-attacks) — blocked (DNS resolution failed)
-- krcert.or.kr — DNS resolution failed
 - boho.or.kr — DNS resolution failed
 - asec.ahnlab.com — DNS resolution failed
+- krcert.or.kr — DNS resolution failed
 - igloo.co.kr — DNS resolution failed
 - sk-shieldus.com — DNS resolution failed

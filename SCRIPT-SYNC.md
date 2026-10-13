@@ -71,4 +71,6 @@
 
 2026-10-12 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)만 페치에 성공했고, 신규 후보로 특정한 securityarsenal.com "GlassWorm, EtherRAT and RebEx RAT" 재시도와 malwarebytes.com 재시도를 포함해 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com)은 전부 DNS 조회 실패로 차단되었습니다(페치 cap 8건 소진으로 cyberone.kr은 이번에 시도하지 않음). WebSearch에서는 NodeLoader, Nodersok, SharkStealer, macOS EtherHiding(Prophet Security), NullReceiver, DAEMON Tools/7-Zip/Notepad++ 트로이목마 설치파일 캠페인 등이 새로 노출되었으나 전부 SearchStrike/EtherRAT와 무관한 별개 패밀리로 확인되어 미채택했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
 
+2026-10-13 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/CLEARFAKE, JADESNOW/INVISIBLEFERRET/BEAVERTAIL/LUMASTEALER)으로 재확인되어 미채택했습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com)과 malwarebytes.com 재시도 전부 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
