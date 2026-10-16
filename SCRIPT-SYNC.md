@@ -77,4 +77,6 @@
 
 2026-10-15 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/CLEARFAKE/JADESNOW)으로 재확인되어 미채택했습니다. WebSearch에서 opensourcemalware.com의 NullReceiver(DPRK C2 기법) 기사를 신규로 발견했으나 스마트컨트랙트 없이 주소 바이트에서 직접 C2 IP를 디코딩하는 별개 기법으로 확인되어 미채택했습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com)과 malwarebytes.com 재시도 전부 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
 
+2026-10-16 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/CLEARFAKE/JADESNOW)으로 재확인되어 미채택했습니다. 한국 소스 5곳(boho.or.kr, asec.ahnlab.com, krcert.or.kr, igloo.co.kr, sk-shieldus.com)과 malwarebytes.com 재시도 전부 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.

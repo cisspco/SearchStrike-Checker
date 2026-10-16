@@ -1,9 +1,9 @@
-# SearchStrike IOC Snapshot — 2026-10-15 UTC
+# SearchStrike IOC Snapshot — 2026-10-16 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (검색결과 0건), cloud.google.com (SearchStrike와 무관한 UNC5342/CLEARFAKE/JADESNOW 캠페인, 2025-10-16자)
-- 페치 차단: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, malwarebytes.com (전부 DNS 조회 실패)
-- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 모두 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가 (페치 cap 8건 소진으로 cyberone.kr은 이번에 시도하지 않음)
+- 페치 성공: microsoft.com (검색결과 0건), cloud.google.com (SearchStrike와 무관한 UNC5342/CLEARFAKE/JADESNOW 캠페인)
+- 페치 차단: boho.or.kr, asec.ahnlab.com, krcert.or.kr, igloo.co.kr, sk-shieldus.com, malwarebytes.com (전부 DNS 조회 실패)
+- 한국 소스 접근 가능 여부: boho.or.kr, asec.ahnlab.com, krcert.or.kr, igloo.co.kr, sk-shieldus.com 5곳 모두 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가 (페치 cap 8건 소진으로 cyberone.kr은 이번에 시도하지 않음)
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: 없음 (WebSearch에서는 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, webflow.sysdig.com, cybersecuritynews.com, securityarsenal.com, safedep.io, prophetsecurity.ai)와 opensourcemalware.com "NullReceiver DPRK C2 technique"만 재확인/신규 노출되었으나, NullReceiver는 스마트컨트랙트 없이 주소 바이트에서 바로 C2 IP를 디코딩하는 별개 기법/캠페인으로 확인되어 SearchStrike와 무관하여 미채택)
+- 신규 보고서: 없음 (WebSearch에서는 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, webflow.sysdig.com, cybersecuritynews.com, securityarsenal.com, safedep.io, prophetsecurity.ai, opensourcemalware.com)만 재확인되었고 신규 후보는 없었습니다)
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,11 +84,11 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-15 — fetched (0 results)
-- [DPRK adopts EtherHiding — Google Cloud Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — 2025-10-16 — fetched (SearchStrike와 무관한 UNC5342/CLEARFAKE/JADESNOW 캠페인으로 확인)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-16 — fetched (0 results)
+- [DPRK adopts EtherHiding — Google Cloud Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (SearchStrike와 무관한 UNC5342/CLEARFAKE/JADESNOW 캠페인으로 재확인)
 - [Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software — Malwarebytes](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — blocked (DNS resolution failed)
-- krcert.or.kr — DNS resolution failed
 - boho.or.kr — DNS resolution failed
 - asec.ahnlab.com — DNS resolution failed
+- krcert.or.kr — DNS resolution failed
 - igloo.co.kr — DNS resolution failed
 - sk-shieldus.com — DNS resolution failed
