@@ -83,4 +83,6 @@
 
 2026-10-18 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW/INVISIBLEFERRET/CLEARFAKE)으로 재확인되어 미채택했습니다. 한국 소스 6곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, cyberone.kr) 전부 이번에도 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
 
+2026-10-19 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW/CLEARFAKE)으로 재확인되어 미채택했습니다. WebSearch에서 malwarebytes.com 기사의 정확한 URL(/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software)을 처음 특정했으나 페치는 이번에도 DNS 조회 실패로 차단되어 rpc.mevblock.io 검토 항목을 여전히 검증하지 못했습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com) 전부 이번에도 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.
