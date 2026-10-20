@@ -79,6 +79,8 @@
 
 2026-10-16 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/CLEARFAKE/JADESNOW)으로 재확인되어 미채택했습니다. 한국 소스 5곳(boho.or.kr, asec.ahnlab.com, krcert.or.kr, igloo.co.kr, sk-shieldus.com)과 malwarebytes.com 재시도 전부 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
 
+2026-10-20 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW/CLEARFAKE, BEAVERTAIL/INVISIBLEFERRET 해시 및 BSC 스마트컨트랙트 포함)으로 재확인되어 미채택했습니다. WebSearch에서는 기존에 이미 특정된 EtherRAT 2차 보도만 재확인되었고 신규 후보는 없었습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com) 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
+
 2026-10-17 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW/CLEARFAKE)으로 재확인되어 미채택했습니다. 한국 소스 5곳(boho.or.kr, asec.ahnlab.com, krcert.or.kr, igloo.co.kr, sk-shieldus.com)과 malwarebytes.com 재시도 전부 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
 
 2026-10-18 기준: 이번 실행에서는 microsoft.com(관련 게시물 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/JADESNOW/INVISIBLEFERRET/CLEARFAKE)으로 재확인되어 미채택했습니다. 한국 소스 6곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, cyberone.kr) 전부 이번에도 DNS 조회 실패로 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
