@@ -1,8 +1,8 @@
-# SearchStrike IOC Snapshot — 2026-10-21 UTC
+# SearchStrike IOC Snapshot — 2026-10-22 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (검색결과 0건), cloud.google.com ("DPRK adopts EtherHiding" — SearchStrike와 무관한 UNC5342/JADESNOW/UNC5142/CLEARFAKE 캠페인으로 재확인)
-- 페치 차단: malwarebytes.com, krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com (전부 DNS 조회 실패)
+- 페치 성공: microsoft.com (관련 게시물 0건), cloud.google.com ("DPRK adopts EtherHiding" — SearchStrike와 무관한 UNC5342/JADESNOW/INVISIBLEFERRET 캠페인으로 재확인)
+- 페치 차단: malwarebytes.com (DNS 조회 실패), krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com (전부 DNS 조회 실패)
 - 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 모두 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
@@ -32,7 +32,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 ## 검토 필요 (4)
 - hereusers.allsettled[.]net — 도메인 형태부터 RPC 인프라로 보이지 않으며 어떤 이더리움 RPC 제공업체와도 일치하지 않음
 - rpc.lokichain[.]io — "Lokichain"은 알려진 주요 이더리움 RPC/체인 제공업체가 아님, 검색으로 확인되는 서비스 없음
-- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성. 이번 실행 WebSearch 스니펫(Ethereum RPC blockchain C2 malware 검색)에서 Malwarebytes 기사가 EtherRAT이 조회하는 공개 RPC 목록에 "MEV Blocker"를 포함한다고 재확인했으나, 원문(malwarebytes.com) 페치는 이번에도 DNS 조회 실패로 차단되어 정확한 호스트명(rpc.mevblock.io vs mevblocker.io)을 여전히 직접 검증하지 못함
+- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 알려진 RPC 목록과 일치하지 않아 검토 필요. 이번 실행에서도 Malwarebytes 원문(2026-06, "Inside a malicious infrastructure delivering EtherRAT...") 페치가 DNS 조회 실패로 차단되어 정확한 호스트명을 여전히 검증하지 못함
 - rpc.payload[.]de — 알려진 공개 이더리움 RPC 제공업체(Alchemy, Infura, dRPC, BlockPI, LlamaRPC, Blast API, Flashbots 등) 목록에서 확인되지 않음
 
 ## 파일 해시 (11)
@@ -61,10 +61,10 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: 없음 (WebSearch에서는 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, webflow.sysdig.com/sysdig.com, cybersecuritynews.com, securityarsenal.com, safedep.io, prophetsecurity.ai, opensourcemalware.com)만 재확인되었고 신규 후보는 없었습니다. cloud.google.com의 "DPRK adopts EtherHiding" 페치는 성공했으나 UNC5342/JADESNOW/UNC5142/CLEARFAKE/BEAVERTAIL/INVISIBLEFERRET/LUMASTEALER 관련 상세(해시 2건, BNB Smart Chain 컨트랙트, 이더리움 트랜잭션 해시 포함)만 확인되었을 뿐 SearchStrike와는 여전히 무관합니다. 한국 소스 5곳과 malwarebytes.com은 이번에도 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
+- 신규 보고서: 없음 (WebSearch 스니펫에서 Malwarebytes 2026-06 기사가 EtherRAT이 조회하는 공개 RPC 목록에 `mainnet.gateway.tenderly.co`(Tenderly Gateway)를 포함한다고 처음 언급됨을 확인했으나, 원문 페치가 DNS 조회 실패로 차단되어 본문을 확인하지 못했고 SearchStrike 스크립트의 기존 RPC 배열과의 관계도 검증하지 못해 미채택 — 아래 "스크립트 반영 필요" 참고. 그 외에는 기존에 이미 특정된 EtherRAT 2차 보도만 재확인되었고 다른 신규 후보는 없었습니다. 한국 소스 5곳과 malwarebytes.com은 이번에도 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
 
 ## 스크립트 반영 필요 (수작업)
-없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
+없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음. `mainnet.gateway.tenderly.co`는 원문 미확인 상태라 아직 후보로도 채택하지 않았으며, SCRIPT-SYNC.md에 감시 항목으로만 기록)
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -84,9 +84,9 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-21 — fetched (0 results)
-- [DPRK adopts EtherHiding — Google Cloud Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (SearchStrike와 무관한 UNC5342/JADESNOW/UNC5142/CLEARFAKE 캠페인으로 재확인)
-- malwarebytes.com — DNS resolution failed
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-22 — fetched (0 results)
+- [DPRK adopts EtherHiding — Google Cloud Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (SearchStrike와 무관한 UNC5342/JADESNOW/INVISIBLEFERRET 캠페인으로 재확인)
+- [Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software — Malwarebytes](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — DNS resolution failed (blocked)
 - krcert.or.kr — DNS resolution failed
 - boho.or.kr — DNS resolution failed
 - asec.ahnlab.com — DNS resolution failed
