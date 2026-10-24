@@ -1,4 +1,4 @@
-# SearchStrike IOC Snapshot — 2026-10-23 UTC
+# SearchStrike IOC Snapshot — 2026-10-24 UTC
 
 ## 수집 상태
 - 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com ("DPRK adopts EtherHiding" — SearchStrike와 무관한 UNC5342/JADESNOW/CLEARFAKE/Contagious Interview 캠페인으로 재확인)
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: 없음 (WebSearch 5건 모두 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, sysdig.com/webflow.sysdig.com, cybersecuritynews.com, securityarsenal.com, prophetsecurity.ai)만 재확인했고 신규 후보는 없었습니다. "Ethereum RPC blockchain C2 malware" 검색 결과도 2026-08 보도가 최신이었고 2026-10 신규 보도는 없었습니다. 한국 소스 5곳과 malwarebytes.com은 이번에도 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
+- 신규 보고서: 없음 (WebSearch 5건 모두 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, sysdig.com/webflow.sysdig.com, cybersecuritynews.com, securityarsenal.com, prophetsecurity.ai, safedep.io)만 재확인했고 신규 후보는 없었습니다. "SearchStrike 마야 침해사고" 검색은 2026 올림픽/월드컵 관련 무관 결과만 반환했습니다. 한국 소스 5곳과 malwarebytes.com은 이번에도 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음. `mainnet.gateway.tenderly.co`는 원문 미확인 상태라 아직 후보로도 채택하지 않았으며, SCRIPT-SYNC.md에 감시 항목으로만 기록)
@@ -84,7 +84,7 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-23 — fetched (0 results)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-10-24 — fetched (0 results)
 - [DPRK adopts EtherHiding — Google Cloud Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (SearchStrike와 무관한 UNC5342/JADESNOW/CLEARFAKE/Contagious Interview 캠페인으로 재확인)
 - [Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software — Malwarebytes](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — DNS resolution failed (blocked)
 - krcert.or.kr — DNS resolution failed
