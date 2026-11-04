@@ -101,4 +101,6 @@
 
 2026-11-03 기준: 이번 실행에서는 microsoft.com(SearchStrike 검색 결과 0건)과 cloud.google.com("DPRK adopts EtherHiding") 페치에 성공했으나 후자는 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5342/CLEARFAKE/JADESNOW/INVISIBLEFERRET/BEAVERTAIL/LUMASTEALER)으로 재확인되어 미채택했습니다. WebSearch에서 cybersecuritynews.com의 SharkStealer(BNB 테스트넷 기반 Go 인포스틸러) 기사를 신규로 발견했으나 SearchStrike/EtherRAT와 무관한 별개 패밀리로 확인되어 미채택했습니다. malwarebytes.com을 새 URL 형식(?p=424132)으로도 재시도했으나 이번에도 DNS 조회 실패로 차단되어 `rpc.mevblock.io` 검토 항목을 여전히 검증하지 못했습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com) 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
 
+2026-11-04 기준: 이번 실행에서는 microsoft.com(SearchStrike 검색 결과 0건)만 페치에 성공했습니다. 신규 2차 보도 후보 3건(dev.to "EtherRAT: how North Korean hackers weaponized Ethereum smart contracts"(스니펫상 9개 RPC 제공업체 조회 주장, 구체적 호스트명 미확인), cyberwarzone.com "SleepyDuck"(별개의 블록체인 C2 RAT 패밀리로 보여 미채택), vpncentral.com "EtherRAT hides in fake Tftpd64 installer")을 처음 특정했으나 전부 DNS 조회 실패(ENOTFOUND)로 차단되어 본문을 확인하지 못했습니다. 한국 소스 4곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, sk-shieldus.com)도 전부 DNS 조회 자체가 실패해 접근 불가했습니다. `rpc.mevblock.io` 및 `mainnet.gateway.tenderly.co` 감시 항목 모두 malwarebytes.com 페치 차단으로 여전히 미확정 상태입니다. `iocs/`에 신규 채택 지표가 없어 배열 반영 대상도 여전히 없습니다.
+
 향후 실행에서 신규 검증/미검증 지표가 발견되면 여기에 배열명(`$IOC_Hashes` / `$IOC_C2Domains` / `$ETH_RPC_Hosts`)과 최초 발견일을 함께 기록합니다.

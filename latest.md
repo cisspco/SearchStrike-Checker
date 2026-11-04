@@ -1,13 +1,13 @@
-# SearchStrike IOC Snapshot — 2026-11-03 UTC
+# SearchStrike IOC Snapshot — 2026-11-04 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com ("DPRK adopts EtherHiding" — SearchStrike와 무관한 UNC5342/CLEARFAKE/JADESNOW/INVISIBLEFERRET/BEAVERTAIL/LUMASTEALER 캠페인으로 재확인)
-- 페치 차단: malwarebytes.com(신규 URL 형식 ?p=424132 재시도도 DNS 조회 실패), krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com (전부 DNS 조회 실패)
-- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 모두 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가
+- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건)
+- 페치 차단: dev.to, cyberwarzone.com, vpncentral.com, krcert.or.kr, boho.or.kr, asec.ahnlab.com, sk-shieldus.com (전부 DNS 조회 실패/ENOTFOUND)
+- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, sk-shieldus.com 4곳 시도(페치 cap 8건 소진으로 igloo.co.kr, cyberone.kr는 이번에 시도하지 않음), 전부 DNS 조회 자체가 실패해 접근 불가
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
-SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-02) 대비 동일한 지표 구성을 유지.
+SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-03) 대비 동일한 지표 구성을 유지.
 
 ## 공격자 C2 도메인 (차단 대상) (10)
 - aurineuroth[.]com — seed
@@ -32,7 +32,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 ## 검토 필요 (4)
 - hereusers.allsettled[.]net — 도메인 형태부터 RPC 인프라로 보이지 않으며 어떤 이더리움 RPC 제공업체와도 일치하지 않음
 - rpc.lokichain[.]io — "Lokichain"은 알려진 주요 이더리움 RPC/체인 제공업체가 아님, 검색으로 확인되는 서비스 없음
-- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 알려진 RPC 목록과 일치하지 않아 검토 필요. 이번 실행에서도 Malwarebytes 원문 페치(신규 URL 형식 포함)가 DNS 조회 실패로 차단되어 정확한 호스트명을 여전히 검증하지 못함.
+- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 알려진 RPC 목록과 일치하지 않아 검토 필요. 이번 실행에서도 malwarebytes.com 원문 페치가 차단되어 정확한 호스트명을 여전히 검증하지 못했습니다.
 - rpc.payload[.]de — 알려진 공개 이더리움 RPC 제공업체(Alchemy, Infura, dRPC, BlockPI, LlamaRPC, Blast API, Flashbots 등) 목록에서 확인되지 않음
 
 ## 파일 해시 (11)
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: 없음 (WebSearch 5건 모두 기존에 이미 특정된 EtherRAT 2차 보도(malwarebytes.com, esentire.com, securityarsenal.com, cybersecuritynews.com, prophetsecurity.ai, safedep.io)만 재확인했고, 신규로 노출된 cybersecuritynews.com의 SharkStealer 기사는 BNB 테스트넷 기반의 별개 Go 인포스틸러로 SearchStrike/EtherRAT와 무관하여 미채택했습니다. "SearchStrike 마야 침해사고" 검색은 2026 밀라노-코르티나 동계올림픽/월드컵 관련 무관 결과만 반환했습니다. 한국 소스 5곳과 malwarebytes.com(신규 URL 형식 포함)은 이번에도 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
+- 신규 보고서: 없음 (WebSearch 5건에서 신규 2차 보도 후보 3건을 처음 발견했으나 전부 페치가 egress 차단(DNS 조회 실패)되어 본문을 확인하지 못했습니다 — dev.to "EtherRAT: how North Korean hackers weaponized Ethereum smart contracts"(검색 스니펫에서 "9개 RPC 제공업체 조회"를 주장했으나 구체적 호스트명은 확인하지 못함), cyberwarzone.com "SleepyDuck"(스니펫상 SearchStrike/EtherRAT와는 별개의 블록체인 C2 RAT 패밀리로 보임, 미채택), vpncentral.com "EtherRAT hides in fake Tftpd64 installer"(기존에 이미 알고 있는 Tftpd64 위장 공격과 일치하나 신규 해시/도메인은 확인하지 못함). "SearchStrike 마야 침해사고" 검색은 여전히 2026 밀라노-코르티나 동계올림픽/월드컵 관련 무관 결과만 반환했습니다. 한국 소스 4곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, sk-shieldus.com — 페치 cap 소진으로 igloo.co.kr/cyberone.kr 미시도)은 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,11 +84,11 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-03 — fetched (0 results)
-- [DPRK adopts EtherHiding — Google Cloud Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (SearchStrike와 무관한 UNC5342/CLEARFAKE/JADESNOW/INVISIBLEFERRET/BEAVERTAIL/LUMASTEALER 캠페인으로 재확인)
-- [Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software — Malwarebytes](https://www.malwarebytes.com/?p=424132) — DNS resolution failed (blocked)
-- krcert.or.kr — DNS resolution failed
-- boho.or.kr — DNS resolution failed
-- asec.ahnlab.com — DNS resolution failed
-- igloo.co.kr — DNS resolution failed
-- sk-shieldus.com — DNS resolution failed
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-04 — fetched (0 results)
+- dev.to — "EtherRAT: How North Korean Hackers Weaponized Ethereum Smart Contracts" — blocked (ENOTFOUND)
+- cyberwarzone.com — "SleepyDuck Malware Redefines C2 Resilience with Ethereum Blockchain" — blocked (ENOTFOUND)
+- vpncentral.com — "EtherRAT malware hides in fake Tftpd64 installer to target Windows users" — blocked (ENOTFOUND)
+- krcert.or.kr — DNS resolution failed (blocked)
+- boho.or.kr — DNS resolution failed (blocked)
+- asec.ahnlab.com — DNS resolution failed (blocked)
+- sk-shieldus.com — DNS resolution failed (blocked)
