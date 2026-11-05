@@ -1,13 +1,13 @@
-# SearchStrike IOC Snapshot — 2026-11-04 UTC
+# SearchStrike IOC Snapshot — 2026-11-05 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건)
-- 페치 차단: dev.to, cyberwarzone.com, vpncentral.com, krcert.or.kr, boho.or.kr, asec.ahnlab.com, sk-shieldus.com (전부 DNS 조회 실패/ENOTFOUND)
-- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, sk-shieldus.com 4곳 시도(페치 cap 8건 소진으로 igloo.co.kr, cyberone.kr는 이번에 시도하지 않음), 전부 DNS 조회 자체가 실패해 접근 불가
+- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com ("DPRK adopts EtherHiding" — 무관한 별개 캠페인으로 재확인)
+- 페치 차단: vpncentral.com, malwarebytes.com, cybersecuritynews.com, securityarsenal.com, dev.to, safedep.io, boho.or.kr, asec.ahnlab.com (전부 DNS 조회 실패/ENOTFOUND)
+- 한국 소스 접근 가능 여부: boho.or.kr, asec.ahnlab.com 2곳 시도(페치 cap 소진으로 krcert.or.kr/igloo.co.kr/sk-shieldus.com은 이번에 시도하지 않음), 전부 DNS 조회 자체가 실패해 접근 불가
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
-SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-03) 대비 동일한 지표 구성을 유지.
+SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-04) 대비 동일한 지표 구성을 유지.
 
 ## 공격자 C2 도메인 (차단 대상) (10)
 - aurineuroth[.]com — seed
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: 없음 (WebSearch 5건에서 신규 2차 보도 후보 3건을 처음 발견했으나 전부 페치가 egress 차단(DNS 조회 실패)되어 본문을 확인하지 못했습니다 — dev.to "EtherRAT: how North Korean hackers weaponized Ethereum smart contracts"(검색 스니펫에서 "9개 RPC 제공업체 조회"를 주장했으나 구체적 호스트명은 확인하지 못함), cyberwarzone.com "SleepyDuck"(스니펫상 SearchStrike/EtherRAT와는 별개의 블록체인 C2 RAT 패밀리로 보임, 미채택), vpncentral.com "EtherRAT hides in fake Tftpd64 installer"(기존에 이미 알고 있는 Tftpd64 위장 공격과 일치하나 신규 해시/도메인은 확인하지 못함). "SearchStrike 마야 침해사고" 검색은 여전히 2026 밀라노-코르티나 동계올림픽/월드컵 관련 무관 결과만 반환했습니다. 한국 소스 4곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, sk-shieldus.com — 페치 cap 소진으로 igloo.co.kr/cyberone.kr 미시도)은 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
+- 신규 보고서: 없음 (WebSearch 5건에서 신규 2차 보도 후보 4건을 처음 특정했으나 전부 페치가 egress 차단(DNS 조회 실패)되어 본문을 확인하지 못했습니다 — malwarebytes.com "Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software"(기존 `rpc.mevblock.io` 검토 항목의 출처로 추정되는 기사이나 재차 차단), cybersecuritynews.com "Hackers Use EtherRAT and EtherHiding"(2026-08-28자, 스니펫상 "여러 RPC 제공업체 조회 후 가장 일치하는 응답 채택" 기법 언급, 구체 호스트명 미확인), securityarsenal.com "GlassWorm, EtherRAT and RebexRAT: Blockchain C2 and Multi-Stage Supply Chain Attacks"(SearchStrike 연관 여부 미확인), safedep.io "EtherHiding: Blockchain-Based C2 Bootstrapping"(TTP 설명 문서, SearchStrike 특정 IOC 없음). 기존에 발견했던 dev.to(9개 RPC 제공업체 주장)와 vpncentral.com(Tftpd64 위장) 기사도 재시도했으나 동일하게 차단되어 여전히 미검증 상태입니다. cloud.google.com "DPRK adopts EtherHiding" 재확인 결과도 이전과 동일하게 UNC5342/Contagious Interview라는 무관한 별개 캠페인으로 재확인되어 미채택했습니다. "SearchStrike 마야 침해사고" 검색은 여전히 2026 밀라노-코르티나 동계올림픽/월드컵 관련 무관 결과만 반환했습니다. 한국 소스 2곳(boho.or.kr, asec.ahnlab.com — 페치 cap 소진으로 krcert.or.kr/igloo.co.kr/sk-shieldus.com 미시도)은 전부 DNS 조회 자체가 실패해 접근 불가했습니다.)
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,11 +84,13 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-04 — fetched (0 results)
-- dev.to — "EtherRAT: How North Korean Hackers Weaponized Ethereum Smart Contracts" — blocked (ENOTFOUND)
-- cyberwarzone.com — "SleepyDuck Malware Redefines C2 Resilience with Ethereum Blockchain" — blocked (ENOTFOUND)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/search/explore?q=SearchStrike) — 2026-11-05 — fetched (0 results)
+- [Google Cloud Threat Intelligence — "DPRK adopts EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — 2025-10-16 — fetched (무관한 별개 캠페인으로 확인)
 - vpncentral.com — "EtherRAT malware hides in fake Tftpd64 installer to target Windows users" — blocked (ENOTFOUND)
-- krcert.or.kr — DNS resolution failed (blocked)
+- malwarebytes.com — "Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software" — blocked (ENOTFOUND)
+- cybersecuritynews.com — "Hackers Use EtherRAT and EtherHiding" — blocked (ENOTFOUND)
+- securityarsenal.com — "GlassWorm, EtherRAT and RebexRAT: Blockchain C2 and Multi-Stage Supply Chain Attacks" — blocked (ENOTFOUND)
+- dev.to — "EtherRAT: How North Korean Hackers Weaponized Ethereum Smart Contracts" — blocked (ENOTFOUND)
+- safedep.io — "EtherHiding: Blockchain-Based C2 Bootstrapping" — blocked (ENOTFOUND)
 - boho.or.kr — DNS resolution failed (blocked)
 - asec.ahnlab.com — DNS resolution failed (blocked)
-- sk-shieldus.com — DNS resolution failed (blocked)
