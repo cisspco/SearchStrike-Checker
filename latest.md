@@ -1,13 +1,13 @@
-# SearchStrike IOC Snapshot — 2026-11-07 UTC
+# SearchStrike IOC Snapshot — 2026-11-08 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com ("DPRK adopts EtherHiding" — 무관한 별개 캠페인 UNC5142/CLEARFAKE/UNC5342로 재확인)
-- 페치 차단: malwarebytes.com, pulse.bot, vpncentral.com, krcert.or.kr, asec.ahnlab.com, sk-shieldus.com (전부 DNS 조회 실패/ENOTFOUND)
-- 한국 소스 접근 가능 여부: krcert.or.kr, asec.ahnlab.com, sk-shieldus.com 3곳 시도(페치 cap 소진으로 boho.or.kr/igloo.co.kr는 이번에 시도하지 않음) — 전부 DNS 조회 자체가 실패해 접근 불가
+- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건)
+- 페치 차단: malwarebytes.com, vpncentral.com, boho.or.kr, igloo.co.kr, krcert.or.kr, asec.ahnlab.com, sk-shieldus.com (전부 DNS 조회 실패/ENOTFOUND)
+- 한국 소스 접근 가능 여부: boho.or.kr, igloo.co.kr, krcert.or.kr, asec.ahnlab.com, sk-shieldus.com 5곳 모두 시도 — 전부 DNS 조회 자체가 실패해 접근 불가
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
-SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-06) 대비 동일한 지표 구성을 유지.
+SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-07) 대비 동일한 지표 구성을 유지.
 
 ## 공격자 C2 도메인 (차단 대상) (10)
 - aurineuroth[.]com — seed
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: pulse.bot "EtherRAT Techniques Bypass Security Via Ethereum Smart Contracts"를 신규 후보로 처음 특정했으나(WebSearch 스니펫 기준 RPC 호스트 목록 보유 가능성, 초기 침투는 Teams 지원 사기/ClickFix 경로) 페치가 DNS 조회 실패(ENOTFOUND)로 차단되어 본문을 확인하지 못했습니다. microsoft.com(검색 결과 0건)과 cloud.google.com("DPRK adopts EtherHiding")만 페치에 성공했고 후자는 여전히 SearchStrike/EtherRAT와 무관한 별개 캠페인(UNC5142/CLEARFAKE, UNC5342)으로 확인되었습니다. 나머지 6건(malwarebytes.com, vpncentral.com, krcert.or.kr, asec.ahnlab.com, sk-shieldus.com)은 전부 DNS 조회 실패로 차단되어 `rpc.mevblock.io` 및 `mainnet.gateway.tenderly.co` 감시 항목을 여전히 검증하지 못했습니다.
+- 신규 보고서: WebSearch에서 신규 후보는 발견되지 않았습니다(dev.to, safedep.io, cybersecuritynews.com, securityarsenal.com, pulse.bot, cyberwarzone.com "SleepyDuck", vpncentral.com "EtherRAT via fake Tftpd64" — 전부 기존에 이미 특정된 2차 보도이거나 별개 패밀리). microsoft.com(검색 결과 0건)만 페치에 성공했고, 한국 소스 5곳(boho.or.kr, igloo.co.kr, krcert.or.kr, asec.ahnlab.com, sk-shieldus.com) 전부와 malwarebytes.com, vpncentral.com은 전부 DNS 조회 실패(ENOTFOUND)로 차단되어 `rpc.mevblock.io` 및 `mainnet.gateway.tenderly.co` 감시 항목을 여전히 검증하지 못했습니다.
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,11 +84,11 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-07 — fetched (0 results)
-- [Google Cloud Threat Intelligence — "DPRK adopts EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — 2025-10-16 — fetched (무관한 별개 캠페인 UNC5142/CLEARFAKE/UNC5342로 확인)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-08 — fetched (0 results)
 - malwarebytes.com — "Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software" (?p=424132) — blocked (ENOTFOUND)
-- [EtherRAT Techniques Bypass Security Via Ethereum Smart Contracts](https://www.pulse.bot/cybersecurity/news/etherrat-techniques-bypass-security-via-ethereum-smart-contracts-c238ff94-e267-4857-9591-5cb6c89e39af) — blocked (ENOTFOUND)
 - vpncentral.com — "EtherRAT malware hides in fake Tftpd64 installer to target Windows users" (?p=249464) — blocked (ENOTFOUND)
+- boho.or.kr — blocked (ENOTFOUND)
+- igloo.co.kr — blocked (ENOTFOUND)
 - krcert.or.kr — blocked (ENOTFOUND)
 - asec.ahnlab.com — blocked (ENOTFOUND)
 - sk-shieldus.com — blocked (ENOTFOUND)
