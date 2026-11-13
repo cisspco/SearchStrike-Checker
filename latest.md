@@ -1,13 +1,13 @@
-# SearchStrike IOC Snapshot — 2026-11-12 UTC
+# SearchStrike IOC Snapshot — 2026-11-13 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com/unc5142-etherhiding-distribute-malware (SearchStrike/EtherRAT와 무관한 별개 캠페인으로 확인)
-- 페치 차단: krcert.or.kr, asec.ahnlab.com, vpncentral.com, aviatrix.ai (전부 DNS 조회 실패/ENOTFOUND)
-- 한국 소스 접근 가능 여부: krcert.or.kr, asec.ahnlab.com 2곳 이번 실행에서 재시도했으나 전부 DNS 조회 자체가 실패해 접근 불가. 동일한 차단 패턴이 반복 확인되어 boho.or.kr/igloo.co.kr/sk-shieldus.com은 이번 실행에서 추가 시도하지 않음(툴 안내에 따라 동일 패턴 반복 시도 중단).
+- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com/dprk-adopts-etherhiding (SearchStrike/EtherRAT와 무관한 별개 캠페인으로 확인)
+- 페치 차단: scworld.com, vpncentral.com, asec.ahnlab.com, malwarebytes.com, aviatrix.ai, krcert.or.kr, boho.or.kr (전부 DNS 조회 실패/ENOTFOUND)
+- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr 2곳 이번 실행에서 재시도했으나 전부 DNS 조회 자체가 실패해 접근 불가. 동일한 차단 패턴이 반복 확인되어 igloo.co.kr/sk-shieldus.com은 이번 실행에서 추가 시도하지 않음(페치 cap 8건 소진).
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
-SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-11) 대비 동일한 지표 구성을 유지.
+SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-12) 대비 동일한 지표 구성을 유지.
 
 ## 공격자 C2 도메인 (차단 대상) (10)
 - aurineuroth[.]com — seed
@@ -32,7 +32,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 ## 검토 필요 (4)
 - hereusers.allsettled[.]net — 도메인 형태부터 RPC 인프라로 보이지 않으며 어떤 이더리움 RPC 제공업체와도 일치하지 않음
 - rpc.lokichain[.]io — "Lokichain"은 알려진 주요 이더리움 RPC/체인 제공업체가 아님, 검색으로 확인되는 서비스 없음
-- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 알려진 RPC 목록과 일치하지 않아 검토 필요. 이번 실행에서도 malwarebytes.com 등 원문 페치가 차단되어 정확한 호스트명을 여전히 검증하지 못했습니다.
+- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 알려진 RPC 목록과 일치하지 않아 검토 필요. 이번 실행에서도 malwarebytes.com 원문 페치가 차단되어 정확한 호스트명을 여전히 검증하지 못했습니다.
 - rpc.payload[.]de — 알려진 공개 이더리움 RPC 제공업체(Alchemy, Infura, dRPC, BlockPI, LlamaRPC, Blast API, Flashbots 등) 목록에서 확인되지 않음
 
 ## 파일 해시 (11)
@@ -61,10 +61,10 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: WebSearch 5건에서 신규 후보로 aviatrix.ai "EtherRAT Distribution: Spoofing Administrative Tools via GitHub Facades"(제목상 본 트래커의 위장 도구 목록과 가장 근접한 보도로 보임)를 처음 특정했으나 페치가 DNS 조회 실패(ENOTFOUND)로 차단되어 본문을 확인하지 못했습니다. cloud.google.com에서는 신규 URL(/unc5142-etherhiding-distribute-malware, 2025-10-16자)을 페치했으나 UNC5142/VIDAR/LUMAC.V2 등 완전히 다른 금전적 동기의 캠페인으로 확인되어 미채택했습니다(C2: saaadnesss[.]shop 등 — SearchStrike IOC와 무관, BSC용 bsc-dataseed.binance[.]org RPC만 등장하며 이더리움 RPC 없음). 그 외 WebSearch 결과는 기존에 이미 특정된 EtherRAT 2차 보도(LevelBlue SpiderLabs의 Tftpd64 위장 설치파일 보도 재인용, dev.to, safedep.io 등)만 재확인되었습니다. 한국 소스(krcert.or.kr, asec.ahnlab.com)는 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다.
+- 신규 보고서: WebSearch에서 scworld.com "More sophisticated EtherRAT malware variant delivered via trojanized installer"를 재확인하고 처음으로 페치를 시도했으나 DNS 조회 실패(ENOTFOUND)로 차단되어 본문을 확인하지 못했습니다. 그 외 WebSearch 5건은 기존에 이미 특정된 EtherRAT 2차 보도(dev.to, safedep.io, cybersecuritynews.com, esentire.com, sysdig.com/webflow.sysdig.com, securityarsenal.com, cyberwarzone.com "SleepyDuck", vpncentral.com "Tftpd64 위장", aviatrix.ai)만 재확인되었고 신규 후보는 없었습니다. cloud.google.com은 정확한 URL(/dprk-adopts-etherhiding)로 재시도해 페치에 성공했으나 여전히 UNC5342/JADESNOW/INVISIBLEFERRET/CLEARFAKE 등 SearchStrike/EtherRAT와 무관한 별개 캠페인(C2는 MySQL 포트 3306을 쓰는 커스텀 서버이며 RPC 엔드포인트 미기재)으로 재확인되어 미채택했습니다. 한국 소스(krcert.or.kr, boho.or.kr)와 vpncentral.com, asec.ahnlab.com, malwarebytes.com, aviatrix.ai는 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다. `rpc.mevblock.io` 및 `mainnet.gateway.tenderly.co` 감시 항목 모두 malwarebytes.com 페치 차단으로 여전히 미확정 상태입니다.
 
 ## 스크립트 반영 필요 (수작업)
-없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
+없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음. `mainnet.gateway.tenderly.co`는 원문 미확인 상태라 아직 후보로도 채택하지 않았으며, SCRIPT-SYNC.md에 감시 항목으로만 기록)
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -84,9 +84,12 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-12 — fetched (0 results)
-- [Google Cloud Threat Intelligence — "UNC5142 EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/unc5142-etherhiding-distribute-malware) — 2025-10-16 — fetched (무관한 별개 캠페인)
-- [aviatrix.ai — "EtherRAT Distribution: Spoofing Administrative Tools via GitHub Facades"](https://aviatrix.ai/threat-research-center/etherrat-distribution-spoofing-administrative-tools-via-github-facades-2026) — blocked (ENOTFOUND)
-- krcert.or.kr — blocked (ENOTFOUND)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-13 — fetched (0 results)
+- [Google Cloud Threat Intelligence — "DPRK adopts EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (무관한 별개 캠페인)
+- [scworld.com — "More sophisticated EtherRAT malware variant delivered via trojanized installer"](https://www.scworld.com/brief/more-sophisticated-etherrat-malware-variant-delivered-via-trojanized-installer) — blocked (ENOTFOUND)
+- [vpncentral.com — "EtherRAT malware hides in fake Tftpd64 installer"](https://vpncentral.com/?p=249464) — blocked (ENOTFOUND)
 - asec.ahnlab.com — blocked (ENOTFOUND)
-- vpncentral.com — blocked (ENOTFOUND)
+- [malwarebytes.com — "Inside a malicious infrastructure delivering EtherRAT"](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — blocked (ENOTFOUND)
+- [aviatrix.ai — "EtherRAT Distribution: Spoofing Administrative Tools via GitHub Facades"](https://aviatrix.ai/blog/etherrat-distribution-spoofing-administrative-tools-via-github-facades) — blocked (ENOTFOUND)
+- krcert.or.kr — blocked (ENOTFOUND)
+- boho.or.kr — blocked (ENOTFOUND)
