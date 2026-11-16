@@ -1,13 +1,13 @@
-# SearchStrike IOC Snapshot — 2026-11-15 UTC
+# SearchStrike IOC Snapshot — 2026-11-16 UTC
 
 ## 수집 상태
 - 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com/dprk-adopts-etherhiding (SearchStrike/EtherRAT와 무관한 별개 캠페인으로 재확인)
-- 페치 차단: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, malwarebytes.com, vpncentral.com (전부 DNS 조회 실패/ENOTFOUND)
+- 페치 차단: malwarebytes.com, krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, dev.to, scworld.com (전부 DNS 조회 실패/ENOTFOUND)
 - 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 전부 이번 실행에서 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가.
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
-SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-14) 대비 동일한 지표 구성을 유지.
+SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-15) 대비 동일한 지표 구성을 유지.
 
 ## 공격자 C2 도메인 (차단 대상) (10)
 - aurineuroth[.]com — seed
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: WebSearch 5건에서는 기존에 이미 특정된 EtherRAT 2차 보도(dev.to, safedep.io, cybersecuritynews.com, esentire.com, sysdig.com/webflow.sysdig.com, securityarsenal.com, scworld.com, vpncentral.com, malwarebytes.com, cyberwarzone.com "SleepyDuck")만 재확인되었고 신규 후보는 없었습니다. "trojanized Tftpd64/Postman/WinDbg installer" 검색에서는 Tftpd64 관련 기존 보도만 재확인되었고 Postman/WinDbg 위장과 관련된 2026년 신규 보도는 여전히 발견되지 않았습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com)과 malwarebytes.com, vpncentral.com 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다. `rpc.mevblock.io` 검토 항목은 여전히 미확정 상태입니다.
+- 신규 보고서: WebSearch 5건에서는 기존에 이미 특정된 EtherRAT 2차 보도(dev.to, safedep.io, cybersecuritynews.com, malwarebytes.com, esentire.com, sysdig.com/webflow.sysdig.com, securityarsenal.com, scworld.com/threatcluster.io, cyberwarzone.com "SleepyDuck")만 재확인되었고 신규 SearchStrike 특정 후보는 없었습니다. "trojanized Tftpd64/Postman/WinDbg installer" 검색에서도 Tftpd64(EtherRAT) 관련 기존 보도만 재확인되었고, Postman은 무관한 2025년 npm 패키지 사건만 나왔으며 WinDbg 위장과 관련된 보도는 여전히 없었습니다. 한국 소스 5곳(krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com)과 malwarebytes.com, dev.to, scworld.com 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다. `rpc.mevblock.io` 검토 항목은 여전히 미확정 상태입니다.
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,12 +84,13 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-15 — fetched (0 results)
-- [Google Cloud Threat Intelligence — "DPRK adopts EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (무관한 별개 캠페인)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-16 — fetched (0 results)
+- [Google Cloud Threat Intelligence — "DPRK adopts EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (무관한 별개 캠페인, UNC5342/JADESNOW)
 - krcert.or.kr — blocked (ENOTFOUND)
 - boho.or.kr — blocked (ENOTFOUND)
 - asec.ahnlab.com — blocked (ENOTFOUND)
 - igloo.co.kr — blocked (ENOTFOUND)
 - sk-shieldus.com — blocked (ENOTFOUND)
-- [Malwarebytes — "Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software"](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — blocked (ENOTFOUND)
-- [vpncentral.com — "EtherRAT malware hides in fake Tftpd64 installer"](https://vpncentral.com/?p=249464) — blocked (ENOTFOUND)
+- [Malwarebytes — "Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software"](https://www.malwarebytes.com/?p=424132) — blocked (ENOTFOUND)
+- [dev.to — "EtherRAT: how North Korean hackers weaponized Ethereum smart contracts..."](https://dev.to/ohmygod/etherrat-how-north-korean-hackers-weaponized-ethereum-smart-contracts-into-an-unkillable-command-4pfl) — blocked (ENOTFOUND)
+- [SC World — "More sophisticated EtherRAT malware variant delivered via trojanized installer"](https://www.scworld.com/brief/more-sophisticated-etherrat-malware-variant-delivered-via-trojanized-installer) — blocked (ENOTFOUND)
