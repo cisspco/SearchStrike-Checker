@@ -1,13 +1,13 @@
-# SearchStrike IOC Snapshot — 2026-11-17 UTC
+# SearchStrike IOC Snapshot — 2026-11-18 UTC
 
 ## 수집 상태
 - 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com/dprk-adopts-etherhiding (SearchStrike/EtherRAT와 무관한 별개 캠페인으로 재확인)
 - 페치 차단: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, malwarebytes.com (전부 DNS 조회 실패/ENOTFOUND)
-- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 전부 이번 실행에서 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가.
+- 한국 소스 접근 가능 여부: krcert.or.kr, boho.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com 5곳 전부 이번 실행에서도 시도했으나 전부 DNS 조회 자체가 실패해 접근 불가.
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
-SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-16) 대비 동일한 지표 구성을 유지.
+SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-17) 대비 동일한 지표 구성을 유지.
 
 ## 공격자 C2 도메인 (차단 대상) (10)
 - aurineuroth[.]com — seed
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: WebSearch 5건 중 "SearchStrike" 자체를 직접 언급하는 결과는 여전히 없었습니다. "SearchStrike malware node.exe LOCALAPPDATA" 검색에서는 Mirage Kitten, Woodgnat, CORNFLAKE.V3 등 node.exe를 악용하는 다른 패밀리들이 나왔으나 SearchStrike/EtherRAT와 무관합니다. "trojanized Tftpd64/Postman/WinDbg" 검색은 Tftpd64(EtherRAT, LevelBlue SpiderLabs 보도 — 가짜 GitHub 저장소를 통한 유포, 4.74 버전 위장) 기존 보도만 재확인했고 Postman/WinDbg 위장 보도는 여전히 없었습니다. cloud.google.com 페치는 성공했으나 UNC5342/JADESNOW/CLEARFAKE(UNC5142)로, SearchStrike와 무관한 별개 캠페인임을 재확인했습니다. 한국 소스 5곳과 malwarebytes.com은 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다.
+- 신규 보고서: WebSearch 5건 중 "SearchStrike" 자체를 직접 언급하는 결과는 여전히 없었습니다. "SearchStrike malware node.exe LOCALAPPDATA" 검색에서는 Woodgnat(ModeloRAT/AsukaStealer/AdaptixC2), Mirage Kitten, LevelBlue LNK 캠페인, CORNFLAKE.V3 등 node.exe를 악용하는 다른 패밀리들이 나왔으나 전부 SearchStrike/EtherRAT와 무관합니다. "trojanized Tftpd64/Postman/WinDbg" 검색은 Tftpd64(EtherRAT, LevelBlue SpiderLabs 보도 — 가짜 GitHub 저장소를 통한 유포, 4.74 버전 위장) 기존 보도만 재확인했고 Postman/WinDbg 위장 보도는 여전히 없었습니다. "Ethereum RPC blockchain C2" 검색에서는 GoCaracal, npm 공급망 공격(6개 패키지), macOS EtherHiding 변종 등 신규 후보가 나왔으나 전부 SearchStrike와 무관한 별개 캠페인/기법입니다. cloud.google.com 페치는 성공했으나 UNC5342/JADESNOW/CLEARFAKE(UNC5142)로, SearchStrike와 무관한 별개 캠페인임을 재확인했습니다. 한국 소스 5곳과 malwarebytes.com은 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다.
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,7 +84,7 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-17 — fetched (0 results)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-18 — fetched (0 results)
 - [Google Cloud Threat Intelligence — "DPRK adopts EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (무관한 별개 캠페인, UNC5342/JADESNOW/CLEARFAKE)
 - krcert.or.kr — blocked (ENOTFOUND)
 - boho.or.kr — blocked (ENOTFOUND)
