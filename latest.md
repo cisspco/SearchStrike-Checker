@@ -1,13 +1,13 @@
-# SearchStrike IOC Snapshot — 2026-11-20 UTC
+# SearchStrike IOC Snapshot — 2026-11-21 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건), cloud.google.com/dprk-adopts-etherhiding (SearchStrike/EtherRAT와 무관한 별개 캠페인 JADESNOW/INVISIBLEFERRET/BEAVERTAIL/CLEARFAKE/LUMASTEALER로 재확인)
-- 페치 차단: unit42.paloaltonetworks.com (신규 후보, ENOTFOUND), atos.net (신규 후보, ENOTFOUND), malwarebytes.com (ENOTFOUND), infosecurity-magazine.com (신규 후보, ENOTFOUND), asec.ahnlab.com (ENOTFOUND), boho.or.kr (ENOTFOUND)
-- 한국 소스 접근 가능 여부: asec.ahnlab.com, boho.or.kr 이번 실행에서도 DNS 조회 자체가 실패해 접근 불가. (krcert.or.kr, igloo.co.kr, sk-shieldus.com, cyberone.kr는 페치 cap 8건 소진으로 이번에는 시도하지 않음 — 과거 실행에서 전부 동일하게 접근 불가였음)
+- 페치 성공: microsoft.com (SearchStrike 검색 결과 0건)
+- 페치 차단: unit42.paloaltonetworks.com (ENOTFOUND, 신규 후보 — EtherRAT 전용 보도), boho.or.kr (ENOTFOUND), krcert.or.kr (ENOTFOUND), asec.ahnlab.com (ENOTFOUND), igloo.co.kr (ENOTFOUND), sk-shieldus.com (ENOTFOUND), cyberone.kr (ENOTFOUND), malwarebytes.com (ENOTFOUND)
+- 한국 소스 접근 가능 여부: boho.or.kr, krcert.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, cyberone.kr 전부 이번 실행에서도 DNS 조회 자체가 실패해 접근 불가 (페치 cap 8건을 모두 한국 소스 6곳 + unit42 + malwarebytes에 사용)
 - seed: 27 (C2 10 + RPC 6 + 해시 11) / 검증: 0 / 미검증: 0 / 검토 필요: 4
 
 ## 캠페인 개요
-SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-19) 대비 동일한 지표 구성을 유지.
+SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, WinDbg, PsExec, USMT, IntuneWinAppUtil, BgInfo, RDCMan 등 IT 관리자/개발자가 흔히 쓰는 정상 유틸리티를 위장한 트로이목마 설치파일로 시작되며, `%LOCALAPPDATA%` 하위의 무작위 6자리 디렉터리에 node.exe를 드롭하고 HKCU/HKLM Run 키 및 16진수 이름의 레지스트리 서브키로 지속성을 확보한다. `msiexec → cmd → node.exe`, `explorer → node.exe` 프로세스 체인과 `.xml/.bak/.cfg/.bin/.ini` 형태의 고엔트로피 설정 페이로드가 특징이며, C2는 공개 이더리움 RPC 엔드포인트를 통해 블록체인에 숨겨진 주소를 조회하는 "EtherHiding" 기법을 사용한다. 이번 실행에서도 변동 없음: 전날(2026-11-20) 대비 동일한 지표 구성을 유지.
 
 ## 공격자 C2 도메인 (차단 대상) (10)
 - aurineuroth[.]com — seed
@@ -32,7 +32,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 ## 검토 필요 (4)
 - hereusers.allsettled[.]net — 도메인 형태부터 RPC 인프라로 보이지 않으며 어떤 이더리움 RPC 제공업체와도 일치하지 않음
 - rpc.lokichain[.]io — "Lokichain"은 알려진 주요 이더리움 RPC/체인 제공업체가 아님, 검색으로 확인되는 서비스 없음
-- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 알려진 RPC 목록과 일치하지 않아 검토 필요. 이번 실행에서도 malwarebytes.com 원문 페치가 차단되어 정확한 호스트명을 여전히 검증하지 못했습니다.
+- rpc.mevblock[.]io — 실제 MEV Blocker 서비스 도메인은 mevblocker.io / rpc.mevblocker.io이며, 스크립트에는 rpc.mevblock.io로 기재됨(철자 불일치) — 정상 제공업체 사칭 가능성, 알려진 RPC 목록과 일치하지 않아 검토 필요. 이번 실행의 WebSearch 스니펫(Malwarebytes 기사 요약)에서도 EtherRAT 샘플의 공개 RPC 목록에 "flashbots, mevblocker, blastapi, publicnode, drpc, merkle"가 언급되어 실제 서비스명이 mevblocker임이 재차 시사되었으나, 해당 기사 본문 페치는 이번에도 차단되어 정확한 호스트명(rpc.mevblock.io vs 다른 표기)을 여전히 검증하지 못했습니다.
 - rpc.payload[.]de — 알려진 공개 이더리움 RPC 제공업체(Alchemy, Infura, dRPC, BlockPI, LlamaRPC, Blast API, Flashbots 등) 목록에서 확인되지 않음
 
 ## 파일 해시 (11)
@@ -61,7 +61,7 @@ SearchStrike(= 2차 보도 기준 EtherRAT으로 통칭)는 Tftpd64, Postman, Wi
 - 신규 해시: 없음
 - 승격(→검증): 없음
 - 분류 변경: 없음
-- 신규 보고서: "SearchStrike 마야 침해사고 IOC" 검색은 관련 결과가 전혀 없었습니다(올림픽 해킹, M-Trends 2026, 무관한 침해사고 기사만 노출). "SearchStrike malware node.exe LOCALAPPDATA" 검색에서는 Mirage Kitten(NodeRabbit/PollCat), LevelBlue LNK 캠페인, Woodgnat 등 node.exe를 악용하는 다른 패밀리들만 나왔고 전부 SearchStrike/EtherRAT와 무관합니다. "KISA SearchStrike 헌팅 가이드" 검색에서는 PHP2Shell 대응 지침, WHISTL 웹쉘 탐지도구 등 무관한 KISA 자료만 노출되었고 SearchStrike 관련 자료는 없었습니다. "trojanized Tftpd64/Postman/WinDbg" 검색에서는 Tftpd64(EtherRAT, LevelBlue SpiderLabs 보도 — 가짜 GitHub 저장소 경유 4.74 버전 위장) 기존 보도만 재확인되었고, Postman/WinDbg 위장 보도는 여전히 없었습니다. "Ethereum RPC blockchain C2" 검색에서 신규 후보 3건(unit42.paloaltonetworks.com, atos.net의 "EtherRAT Distribution: Spoofing Administrative Tools via GitHub Facades" 재게재, infosecurity-magazine.com)을 처음 특정했으나 전부 DNS 조회 실패(ENOTFOUND)로 페치가 차단되어 본문을 확인하지 못했습니다. cloud.google.com 페치는 성공했으나 JADESNOW/INVISIBLEFERRET/BEAVERTAIL/CLEARFAKE/LUMASTEALER로, SearchStrike와 무관한 별개 캠페인임을 재확인했습니다(RPC 엔드포인트 호스트명은 본문에 명시되지 않음, BSC 컨트랙트·이더리움 트랜잭션 해시만 언급). 한국 소스 2곳(asec.ahnlab.com, boho.or.kr)과 malwarebytes.com은 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다(페치 cap 8건 소진으로 krcert.or.kr/igloo.co.kr/sk-shieldus.com/cyberone.kr는 이번에 시도하지 않음).
+- 신규 보고서: "SearchStrike 마야 침해사고 IOC" 검색은 관련 결과가 없었습니다(올림픽 사이버공격, M-Trends 2026 등 무관한 기사만 노출). "SearchStrike malware node.exe LOCALAPPDATA" 검색에서도 Mirage Kitten, LevelBlue LNK 캠페인, Woodgnat, StealIt, Cornflake v3 등 node.exe를 악용하는 다른 패밀리들만 나왔고 전부 SearchStrike/EtherRAT와 무관합니다. "KISA SearchStrike 헌팅 가이드" 검색에서는 PHP2Shell 대응 지침, 기업 보안강화 권고(2026-10) 등 무관한 KISA 자료만 노출되었습니다. "trojanized Tftpd64/Postman/WinDbg" 검색에서는 Tftpd64(LevelBlue SpiderLabs 보도 — 가짜 GitHub 저장소 경유 4.74 버전 위장) 기존 보도만 재확인되었고, Postman/WinDbg 위장 보도는 여전히 없었습니다. "Ethereum RPC blockchain C2" 검색에서 신규 후보 1건(unit42.paloaltonetworks.com/?p=187943, EtherRAT 전용 Executive Summary)을 처음 특정했으나 페치가 ENOTFOUND로 차단되어 본문을 확인하지 못했습니다. 같은 검색의 WebSearch 스니펫에서 Malwarebytes 기사(이미 특정됨, 페치는 여전히 차단)의 EtherRAT 공개 RPC 목록 요약("flashbots, mevblocker, blastapi, publicnode, drpc, merkle")이 재노출되어 기존 검토 대상 rpc.mevblock.io의 철자 불일치 의혹을 재차 시사했으나, 본문을 확인하지 못해 분류는 변경하지 않았습니다. microsoft.com 검색은 관련 게시물 0건이었습니다. 한국 소스 6곳(boho.or.kr, krcert.or.kr, asec.ahnlab.com, igloo.co.kr, sk-shieldus.com, cyberone.kr) 전부 이번에도 DNS 조회 자체가 실패해 접근 불가했습니다.
 
 ## 스크립트 반영 필요 (수작업)
 없음 (SCRIPT-SYNC.md 참조 — 현재 반영 대기 항목 없음)
@@ -84,11 +84,12 @@ salinasrent.com
 
 ## 출처
 - [SearchStrike-Checker.ps1](https://github.com/cisspco/SearchStrike-Checker) — seed(.ps1)
-- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-20 — fetched (0 results)
-- [Google Cloud Threat Intelligence — "DPRK adopts EtherHiding"](https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding) — fetched (무관한 별개 캠페인, UNC5342/JADESNOW/INVISIBLEFERRET/BEAVERTAIL/CLEARFAKE/LUMASTEALER)
-- [Unit 42 — article id 187943](https://unit42.paloaltonetworks.com/?p=187943) — blocked (ENOTFOUND, 신규 후보)
-- [Atos Cybershield — "EtherRAT Distribution: Spoofing Administrative Tools via GitHub Facades"](https://atos.net/en/lp/cybershield/etherrat-distribution-spoofing-administrative-tools-via-github-facades) — blocked (ENOTFOUND, 신규 후보)
-- [Infosecurity Magazine — "EtherRAT Techniques Bypass Security Via Ethereum Smart Contracts"](https://infosecurity-magazine.com/news/etherrat-bypass-security-ethereum) — blocked (ENOTFOUND, 신규 후보)
+- [Microsoft Security Blog search — "SearchStrike"](https://www.microsoft.com/en-us/security/blog/?s=SearchStrike) — 2026-11-21 — fetched (0 results)
+- [Unit 42 — article id 187943 (EtherRAT Executive Summary)](https://unit42.paloaltonetworks.com/?p=187943) — blocked (ENOTFOUND, 신규 후보)
 - [Malwarebytes — "Inside a malicious infrastructure delivering EtherRAT, phishing pages, and malicious software"](https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software) — blocked (ENOTFOUND)
-- asec.ahnlab.com — blocked (ENOTFOUND)
 - boho.or.kr — blocked (ENOTFOUND)
+- krcert.or.kr — blocked (ENOTFOUND)
+- asec.ahnlab.com — blocked (ENOTFOUND)
+- igloo.co.kr — blocked (ENOTFOUND)
+- sk-shieldus.com — blocked (ENOTFOUND)
+- cyberone.kr — blocked (ENOTFOUND)
